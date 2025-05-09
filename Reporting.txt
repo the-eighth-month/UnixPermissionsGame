@@ -1,0 +1,16 @@
+﻿1. What hurdles have you faced so far?
+
+
+I didn’t really know how to approach printing the questions one by one. I tried to do it actually one by one, but it got tedious/repetitive.
+
+
+2. How did you solve them?
+
+
+I researched and remembered that I can use echo in a vector sense where each line aligns with an index. 
+
+
+3. What are you next steps?
+
+
+I need to put it in GitHub and make sure it’s user-friendly!
