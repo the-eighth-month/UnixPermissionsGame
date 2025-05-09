@@ -1,1 +1,33 @@
+#!/bin/bash                                                                                                                                                                                                                                     score=0                                                                                                                                                                                                                                         questions=(                                                                                                                 "What does 'rwxr-xr--' mean for a file?\nA) Owner can read/write/execute, group can read/execute, others can read\n>    "What numeric value represents 'rw-r--r--'?\nA) 755\nB) 777\nC) 644\nD) 600"                                            "Which command changes a file's permission to 755?\nA) chmod 644 file\nB) chmod 755 file\nC) chperm 755 file\nD) ch>    "Who can execute a file with permission 'rwx------'?\nA) Everyone\nB) Owner only\nC) Group only\nD) No one"             "What does the 'x' permission allow?\nA) Rename\nB) Execute\nC) Read\nD) Copy"
+    "What does 'chmod +x script.sh' do?\nA) Makes script.sh read-only\nB) Removes execute permission\nC) Grants execute>    "What does 'chmod 000 file' do?\nA) Makes file readable only\nB) Removes all permissions\nC) Grants all permissions>    "Which user does the first digit in 'rwxr--r--' apply to?\nA) Group\nB) Owner\nC) Others\nD) Everyone"
+    "What does 'r--r--r--' mean?\nA) Full access to all\nB) Only owner has access\nC) Read-only for all\nD) Executable >    "Which permission is needed to enter a directory?\nA) Read\nB) Write\nC) Execute\nD) None"
+)
+
+answers=("A" "C" "B" "B" "B" "C" "B" "B" "C" "C")
+
+for i in "${!questions[@]}"; do
+    echo -e "\nQuestion $((i+1)):"
+    echo -e "${questions[$i]}"
+    read -p "Your answer (A/B/C/D): " user_ans
+    user_ans=$(echo "$user_ans" | tr '[:lower:]' '[:upper:]')
+    echo
+
+    if [[ "$user_ans" == "${answers[$i]}" ]]; then
+        score=$((score + 10))
+        echo "Correct! Score: $score"
+    else
+        echo "Incorrect. Final Score: $score"
+        break
+    fi
+done
+
 echo
+if (( score == 100 )); then
+    echo "Congratulations! You've mastered Unix permissions."
+elif (( score >= 70 )); then
+    echo "You're close to mastery. Great job!"
+elif (( score >= 30 )); then
+    echo "You're improving. Try again for a higher score."
+else
+    echo "Keep trying and study up on Unix permissions."
+fi
